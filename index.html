@@ -6,9 +6,11 @@
   <title>Elhoussaine Oumlal</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap');
+
     * {
       margin: 0; padding: 0; box-sizing: border-box;
     }
+
     body {
       font-family: 'Montserrat', sans-serif;
       background: #fff;
@@ -17,74 +19,106 @@
       flex-direction: column;
       min-height: 100vh;
       word-wrap: break-word;
+      scroll-behavior: smooth;
     }
+
+    /* Navbar */
     nav {
       background: #111;
       color: #eee;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      justify-content: space-between;
+      align-items: center;
       padding: 1rem;
       position: sticky;
       top: 0;
       z-index: 1000;
     }
+
     nav h2 {
-      display: none;
+      font-size: 1.2rem;
     }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+
     nav a {
       text-decoration: none;
       color: #eee;
       font-weight: 500;
-      margin: 0.5rem 1rem;
       font-size: 1rem;
       padding: 0.5rem 1rem;
       border-radius: 10px;
       transition: background 0.3s;
     }
+
     nav a:hover, nav a.active {
       background: #444;
     }
+
+    /* Hamburger for mobile */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      background: #fff;
+      height: 3px;
+      width: 25px;
+      border-radius: 2px;
+    }
+
+    /* Main content */
     main {
       padding: 2rem 1rem;
       max-width: 900px;
       margin: auto;
     }
+
     section {
       margin-bottom: 3rem;
       background: #fafafa;
       border-radius: 15px;
       padding: 2rem;
-      box-shadow:
-        10px 10px 20px #d9d9d9,
-        -10px -10px 20px #ffffff;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
       opacity: 0;
       transform: translateY(50px);
       transition: all 0.8s ease;
     }
+
     section.visible {
       opacity: 1;
       transform: translateY(0);
     }
+
     h1 {
       font-size: 2.2rem;
       margin-bottom: 0.5rem;
       text-align: center;
     }
+
     h2 {
       font-size: 1.6rem;
       border-bottom: 2px solid #111;
       padding-bottom: 0.4rem;
       margin-bottom: 1rem;
     }
+
     p, li {
       font-size: 1rem;
       line-height: 1.6;
     }
+
     ul {
       list-style: none;
       padding-left: 0;
     }
+
     li {
       margin-bottom: 0.6rem;
       border-left: 3px solid #111;
@@ -93,6 +127,7 @@
       justify-content: space-between;
       flex-wrap: wrap;
     }
+
     .btn-download {
       display: inline-block;
       background: #111;
@@ -104,9 +139,11 @@
       margin-top: 1rem;
       transition: 0.3s;
     }
+
     .btn-download:hover {
       background: #333;
     }
+
     .download-certif {
       background: #222;
       color: #fff;
@@ -115,9 +152,11 @@
       text-decoration: none;
       font-size: 0.9rem;
     }
+
     .download-certif:hover {
       background: #444;
     }
+
     #toggleSkills {
       background: #111;
       color: #fff;
@@ -128,24 +167,39 @@
       cursor: pointer;
       margin-bottom: 1rem;
     }
+
     #skillsList {
       display: none;
       list-style: square inside;
       margin-top: 0.5rem;
     }
+
     #contact p {
       margin: 0.5rem 0;
     }
-    @media (max-width: 600px) {
-      nav {
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
         flex-direction: column;
-        align-items: center;
+        background: #111;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        padding: 1rem;
+        width: 200px;
+        border-radius: 0 0 0 10px;
       }
-      nav a {
-        margin: 0.3rem 0;
-        width: 100%;
-        text-align: center;
+
+      .nav-links.active {
+        display: flex;
       }
+
+      .hamburger {
+        display: flex;
+      }
+
       h1 {
         font-size: 1.8rem;
       }
@@ -155,26 +209,34 @@
 <body>
 
 <nav>
-  <h2>El houssaine Oumlal</h2>
-  <a href="#profil" class="active">Profil</a>
-  <a href="#competences">Compétences</a>
-  <a href="#experience">Expérience</a>
-  <a href="#formations">Formations</a>
-  <a href="#certifications">Certifications</a>
-  <a href="#contact">Contact</a>
+  <h2>Elhoussaine Oumlal</h2>
+  <div class="nav-links">
+    <a href="#profil" class="active">Profil</a>
+    <a href="#competences">Compétences</a>
+    <a href="#experience">Expérience</a>
+    <a href="#formations">Formations</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
 
 <main>
+  <!-- Profil -->
   <section id="profil" class="visible">
     <h1>Elhoussaine Oumlal</h1>
     <p><em>Technicien spécialisé en systèmes & réseaux</em></p>
-    <a href="cv oumlal elhoussaine.pdf.pdf" class="btn-download" download>Télécharger CV</a>
+    <a href="cv-oumlal-elhoussaine.pdf" class="btn-download" download>Télécharger CV</a>
     <p style="margin-top:1rem;">
-      Technicien spécialisé en infrastructures digitales, option systèmes et réseaux. Compétences en administration réseau, cybersécurité, virtualisation, et maintenance informatique.
-      Sérieux, curieux et orienté solutions, je cherche à intégrer une entreprise dynamique pour contribuer à la transformation digitale et la sécurité des systèmes.
+      Technicien spécialisé en infrastructures digitales, option systèmes et réseaux.
+      Compétences en administration réseau, cybersécurité, virtualisation, et maintenance informatique.
+      Sérieux, curieux et orienté solutions, je cherche à intégrer une entreprise dynamique.
     </p>
   </section>
 
+  <!-- Compétences -->
   <section id="competences">
     <h2>⚙ Compétences</h2>
     <button id="toggleSkills">Afficher les compétences ▼</button>
@@ -193,6 +255,7 @@
     </ul>
   </section>
 
+  <!-- Expérience -->
   <section id="experience">
     <h2>💼 Expérience Professionnelle</h2>
     <ul>
@@ -209,6 +272,7 @@
     </ul>
   </section>
 
+  <!-- Formations -->
   <section id="formations">
     <h2>🎓 Formations</h2>
     <ul>
@@ -224,21 +288,17 @@
     </ul>
   </section>
 
+  <!-- Certifications -->
   <section id="certifications">
     <h2>🏅 Certifications</h2>
     <ul>
-      <li>eJPT - eLearnSecurity
-       <!-- <a href="certificates/ejpt.pdf" class="download-certif" download>📄</a>-->
-      </li>
-      <li>Ethical Hacking Cisco
-       <!-- <a href="certificates/ethical-cisco.pdf" class="download-certif" download>📄</a>-->
-      </li>
-      <li>Autres certifications
-        <!--<a href="certificates/others.pdf" class="download-certif" download>📄</a>-->
-      </li>
+      <li>eJPT - eLearnSecurity</li>
+      <li>Ethical Hacking Cisco</li>
+      <li>Autres certifications</li>
     </ul>
   </section>
 
+  <!-- Contact -->
   <section id="contact">
     <h2>📍 Contact</h2>
     <p>📧 Email : <a href="mailto:oumlal068@gmail.com">oumlal068@gmail.com</a></p>
@@ -249,7 +309,7 @@
 </main>
 
 <script>
-  // Animation section on scroll
+  // Intersection animation
   const sections = document.querySelectorAll('section');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -287,6 +347,13 @@
         link.classList.add('active');
       }
     });
+  });
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.querySelector('.nav-links');
+  hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
   });
 </script>
 
